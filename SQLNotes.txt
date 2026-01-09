@@ -1,0 +1,136 @@
+DML:-
+Create a copy of table.
+Syntax:
+Create table table-name as select statement;
+ex: create table emp1 as select * from emp;
+
+DML(Data Manipulation Language):
+-Used to manage and manipulate the data inside the database.
+-DML is not directly connecteed to database, so the changes are not permanent.
+-DML commands are not auto-commited.
+-To make the changes permanent to database we should use TCL.
+
+1)insert: Used to insert the values into the table.
+Syntax: 1(if you want store all the values into all the columns for particular row)
+insert into table-name values (value1, value2, value3.....);
+ex:insert into product1 values (1,'car',1200,12-sep-2022);
+
+syntax2:(if you want to store the values for particular column use syntax2)
+insert into table-name (col1, col2, col3.....) values (value1, value2, value3.....) ;
+ex: insert into product1 (pid,pname) values(1,bus);
+
+TCL:Used to control the transaction done by the DML statement.
+-TCL are applicable only for DML statement.
+
+commit: used to save the data permanently into the database.
+syntax: commit;
+
+DQL: Data Query Language
+-Used to retreive the data from the Database.
+-select : Used to retreive/select the data from the table/database and to display it.
+-The returned rows may be set of rows stored in a table called result table or result set.
+-To retreive the data we have three different ways:
+1)projection
+2)selection
+3)joins
+																	
+Projection: Used to retreive the data just by selecting the column is known as projection.
+syntax: select */distinct column-name expression/aliasing
+        from table-name;
+order of execution: 1)from
+					2)select
+note: * selects all the column, once the column is selcted by default values get selcted.
+-If user gives the table-name which is not present in the database, then user gets an error(table/view dosen't exist,)
+-If user gives the col-name which is not present in the table, then user gets an error as invalid-identifier.
+-Query: its a request sent to database to fetch the required data.
+
+Q1)WAQTD details of employee.
+ans- select * from emp;
+Q2)WAQTD details of department.
+ans- select * from dept;
+Q3)WAQTD salgrade details.
+ans- select * from salgrade;
+
+Distinct: Used to remove the duplicate in specified column or in table.
+-We can include more than one column in one distinct keyword/clause.
+-We cannot have more than one distinct in one select statement.
+-If the user has a requirement of using distinct, always the distinct should be the 1st argument after the select clause.
+
+Q4)WAQTD employee name and salary of all the employee.
+ans- select ename,sal from emp;
+Q5)WAQTD employee name, salary, mgr, comm and deptno of all employee.
+ans- select ename,sal,mgr,comm,deptno from emp;
+Q6)WAQTD unique jobs.
+ans- select distinct job from emp;
+Q7)WAQTD unique deptno.
+ans- select distinct deptno from emp;
+Q8)WAQTD unique job, deptno of employee.
+ans- select distinct job,deptno from emp;
+
+Expression/aliasing:
+Expression: Combination of operand and operator.
+
+Aliasing: Used to rename the column-name.
+-Aliasing can be done in 3 ways.
+		1)using as keyword
+		2)using space( )
+		3)using double quote("")
+1)old-column-name as aliasing-name
+2)old-col-name aliasing-name
+2)old-column-name "aliasing-name" (if you want space inside single column use the 3rd way(""))
+
+Q9)WAQTD all the details of employee along with annualsal.
+ans- select emp.*,sal*12 as annualsal from emp;
+Q10)WAQTD all the details of employee along with their half term salary and anual salary.
+ans- select emp.*,sal*6 "HALF TERM SAL",sal*12 "ANUAL SAL" from emp;
+Q11)WAQTD empno as eid, sal as salary and deptno as dno.
+ans- select empno eid,sal as salary,deptno "DNO" from emp;
+
+Selection: Used to retreive the data by selecting noth columns and rows is known as selection.
+syntax- select */distinct column-name expression/aliasing
+		from table-name
+		where <condition>;
+
+Order of execution: from
+					where
+					select
+
+Note: Where clause: used to filter the records inside the table.
+-Where clause executes row by row process.
+-we can write n number of conditon inside the where clause.
+-We cannot write more than one where clause in one select statement.
+-Where clause is implimented on rows.
+
+**- If the condition is not satisfied in any of the row, we get the output as no rows selected.(If the given condition are false)
+-In the selection, select is dependent on the where clause.(filtered rows)
+
+Q1)WAQTD details of MARTIN.
+ans- select * from emp where ename='MARTIN';
+o/p- (1)no of rows
+Q2)WAQTD details of employee who works as CLERK.
+ans- select * from emp where job='CLERK';
+o/p- (4)no of rows
+Q3)WAQTD details of employee who are earning 3000.
+ans- select * from emp where sal=3000;
+o/p- (2)no of rows
+Q4)WAQTD ename and deptno, if the employee works in deptno 30.
+ans- select ename,deptno from emp where deptno=30;
+o/p- (6)no of rows
+Q5)WAQTD ename and hiredate, if employee hired on '03-DEC-81'.
+ans- select ename, hiredate from emp where hiredate='03-DEC-81';
+o/p- (2)no of rows
+Q6)WAQTD employee name, salary and mgr, if employee reporting manager number is 7839.
+ans- select ename,sal,mgr from emp where mgr=7839;
+o/p- (3)no of rows 
+Q7)WAQTD details of employee who earns commision more than 400.
+ans- select * from emp where comm>400;
+o/p- (2)no of rows
+Q8)WAQTD details of employee, if employee number is 7902.
+ans- select * from emp where empno=7902;
+o/p- (1)no of rows
+Q9)WAQTD details of employee along with annualsal, if annualsal is 36000.
+ans- select emp.*,sal*12 as annualsal from emp where sal*12=36000;
+o/p- (2)no of rows
+Q10)WAQTD details of employee along with halfterm salary, if halfterm salary of employee is 40000.
+ans- select emp.*,sal*6 as halfterm from emp where sal*6=40000;
+o/p- (0)no of rows	

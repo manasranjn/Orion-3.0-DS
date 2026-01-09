@@ -1,0 +1,978 @@
+fillna(), dropna(), replace(). etc..
+
+fillna():-
+NaN
+Syntax: df.fillna(newValue)
+Syntax: df.fillna({
+    'col1': "Value",
+    'col2': "Value",
+    'Col3': "Value",
+})
+method=ffill
+
+Syntax: df.fillna(method='ffill')
+
+method=bfill
+Syntax: df.fillna(method='bfill')
+
+Syntax:  df.fillna(method='ffill', axis='columns')
+
+Syntax: df.fillna(method='ffill', limit=1)
+
+Syntax: df.fillna(interpolate())
+method=linear/nearest/quadratic/cubic/time...etc
+
+dropna()
+Syntax:  df.dropna()
+
+Syntax: df.dropna(how='all')
+
+thresh
+Syntax: df.dropna(thresh=1)
+
+date_range() MM-DD-YYYY
+
+replace()
+
+Syntax: df.replace(searchValue, newValue)
+Syntax: df.replace(searchValue, np.NaN)
+Syntax: df.replace([val1, val2, val3], newValue)
+Syntax: df.replace({'col1': searchValue,
+					'col2': searchValue}, newValue)
+Syntax: df.replace({
+					val1: newValue1,
+					val2: newValue2})
+					
+regex
+Syntax: df.replace({'col1': '[A-Za-z]'}, "newValue",
+					regex= True)
+
+Syntax: df.replace([list1], [list2])
+
+groupby()
+
+Syntax: df.groupby('colName')
+
+for groupname, group_Data in group
+	print(groupname)
+	print(group_Data)
+	
+get_group()
+
+Syntax: gr.get_group(groupname)
+
+max()
+
+Syntax: gr.max()
+split-apply-combine
+
+gr.mean() - It returns 
+describe()
+
+Syntax: gr.describe()
+
+concat():-
+Syntax: pd.concat([df1, df2, df3])
+
+ignore_index=True 
+
+Syntax: pd.concat([df1,df2], ignore_index=True)
+
+keys
+Syntax: pd.concat([df1, df2], keys=['A', 'B'])
+
+Syntax: df.loc('A')
+
+Syntax: pd.concat([df1, df2], axis=1)
+
+df1 = pd.DataFrame({......}, index = [0,1,2,3])
+df2 = pd.DataFrame({......}, index = [2,0,1,3])
+
+Example:
+ s= pd.Series(['A','B','C'])
+	
+
+Pivot():-
+Syntax:- df.pivot(index='ColName', columns='ColName', values='ColName')
+
+Ex:- df.pivot(index='Employee', columns='Year', values='Salary')
+
+pivot_table():-
+aggfunc= mean
+
+pivot_table_df = df.pivot_table(
+    index='Employee',
+    columns='Year',
+    values='Salary',
+    aggfunc='sum',     
+    fill_value=0,      
+    margins=True,    
+    margins_name='Total'
+)
+pivot_table_df
+
+
+melt():-
+
+melt_df = pd.melt(
+    df,
+    id_vars=['Employee', 'Department'],   
+    value_vars=['Salary', 'Bonus'],       
+    var_name='New Col',                  
+    value_name='Amount'                   
+)
+melt_df
+
+rename():-
+Syntax:- df.rename(columns={'oldName': 'newName'}, inplace=True)
+
+df.rename(columns={'Employee':'Emp Name'}, inplace=True)
+
+drop_duplicates():-
+Syntax:- df.drop_duplicates(inplace=True)
+
+apply():-
+Syntax:- df.apply(function)
+
+df['New'] = df['Year'].apply(lambda x: x+1)
+
+sort_values():-
+Syntax:- df.sort_values(by,ascending=True, inplace=True)
+
+df.sort_values('Salary', ascending=False, inplace=True)
+
+1.Create a scatter plot for 10 random (x, y) points using different colors and markers.
+
+2.Draw a bar chart showing marks of 5 subjects: English, Math, Science, History, and Art.
+
+3.Create a pie chart showing percentage of time spent on different daily activities.
+
+4.Plot a histogram for 100 random numbers (between 0 and 1).
+
+5.Create a bar chart for monthly expenses and add labels above each bar.
+
+6.Create a line chart to compare the population growth of two countries over 10 years.
+
+7.Draw a bar chart to display the monthly revenue of a company.
+
+8.Draw a pie chart showing percentage usage of different social media apps.
+
+9.Create a line chart with grid, custom color, and legend.
+
+10.Create a plot and save it as graph.png.
+
+11. Load a CSV file into a DataFrame.
+-Display first 5 rows using head().
+-Display column names using columns.
+-Display shape and info of DataFrame
+
+12.Create a DataFrame of students with columns Name, Subject, and Score.
+-Select all rows where Score > 80.
+
+13.Using the following DataFrame:
+	df = pd.DataFrame({
+    'Name': ['Amit', 'Rahul', 'Priya', 'Neha', 'Ravi'],
+    'Age': [21, 23, 22, 20, 23],
+    'Marks': [88, 92, 79, 85, 95],
+    'City': ['Delhi', 'Mumbai', 'Delhi', 'Chennai', 'Kolkata']
+})
+-Display only names of students from Delhi.
+-Display students having Marks >= 85.
+-Display average marks.
+
+
+
+
+
+Data:- 
+Database:- 
+
+C: Create- insert
+R: Read- select
+U: Update- update
+D: Delete- drop/delete
+
+DBMS:- (Database Management System)
+
+HDBMS- Hierarchical DBMS
+NDBMS- Network DBMS
+ODBMS- Object DBMS
+RDBMS- Relational DBMS
+
+RDBMS:-
+E.F. Codd
+e.g:- Oracle, MySQL, MS Access, MS SQL Server, maria DB, sybase, etc...
+
+SQL:- (Structure Query Language)
+-Sequel
+-Donald Chamberlin and Raymond Bayce 
+
+1.show:-
+e.g:- show pages -> 14
+	show lines -> 80
+	show pages lines
+	
+- show user ->scott
+
+2. set:- 
+e.g:- set lines 200
+	set pages 200
+	set lines 200 pages 200
+	
+3. cl scr:-
+4. desc:- 
+e.g:-  desc table_name
+	describe table_name
+	
+5. ed:- /
+
+Types:-
+char
+varchar/varchar2
+number
+date
+large objects
+	-clob(Character Large Object)
+	-blob(Binary Large Object)
+
+1) char:-
+[A-Z][a-z][0-9] and (!, @, &, $, ₹)
+Syntax:- colName char(size)
+e.g:- Name char(20)
+
+2) varchar & varchar2:-
+Syntax:- name varchar2(200)
+
+3) number:-
+Syntax:- name number
+or	name number(p,s)
+
+Precision:- 1 to 38
+Scale:- 
+e.g:- 101.10 (5,2)
+	number(4,4) - 0.9999
+	number(4,3) - 9.999
+	number(4,2) - 99.99
+	number(4,1) - 999.9
+	number(4) - 9999
+
+4) Date:- 
+ dd-mon-yy -> 15-Oct-25
+ dd-mon-yyyy -> 15-Oct-2025
+ 
+Syntax:- hiredate date
+timestamp
+
+5) Large Objects
+	i)- clob(Charecter Large Object)
+	ii)- blob(Binary Large Object)
+	
+ALTER USER scott ACCOUNT UNLOCK IDENTIFIED BY tiger;
+
+Sid Name Age Mark Address RegNo
+
+
+1.not null
+2.unique
+3.Primary key
+4.FOREIGN key
+5.check
+6.default
+
+Statements/Commands/Languages:-
+1.DDL(Data Defination Language)
+2.DML(Data Manipulation Language)
+3.TCL(Transaction Control Language)
+4.DCL(Data Control Language)
+5.DQL(Data Query Language)
+
+UN- sys as sysdba
+Pass- tiger
+
+Create User:- create user user_name identified by password;
+e.g:- create user user1 identified by hello;
+
+Select users:- select * from all_users;
+
+grant resource, connect to user_name;
+e.g: grant resource, connect to user1;
+
+
+Create a table-
+Syntax:-
+create table table-name (col1 data-type constraints,
+					col2 data-type constraints,...)
+					
+e.g: CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    age INT check (age>20),
+    city VARCHAR(50)
+);
+						
+Insert data into a table-
+Syntax:- 
+1)insert into table-name(val1, val1, val3....)
+2)insert into table-name(col1, col2..) values (val1,val2...)
+
+e.g: INSERT INTO students VALUES (2, 'Pranab', 21, 'Bhubaneswar');
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    age INT,
+    city VARCHAR(50)
+);
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50),
+    instructor VARCHAR(50)
+);
+
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+INSERT INTO students VALUES (3, 'Manas', 22, 'Bhubaneswar');
+INSERT INTO students VALUES (4, 'Riya', 21, 'Cuttack');
+INSERT INTO students VALUES (5, 'Amit', 23, 'Puri');
+
+INSERT INTO courses VALUES (101, 'HTML', 'Mr. Sharma');
+INSERT INTO courses VALUES (102, 'JavaScript', 'Ms. Gupta');
+INSERT INTO courses VALUES (103, 'React', 'Mr. Mehta');
+
+INSERT INTO enrollments VALUES (1001, 1, 101, DATE '2025-10-01');
+INSERT INTO enrollments VALUES (1002, 1, 103, DATE '2025-10-10');
+INSERT INTO enrollments VALUES (1003, 2, 102, DATE '2025-10-05');
+INSERT INTO enrollments VALUES (1004, 3, 101, DATE '2025-10-07');
+
+1)WAQTD emp name, sal and dept, if emp name is SMITH or ALLEN or MARTIN
+select ename, deptno, sal from emp where ename in ('SMITH', 'MARTIN', 'ALLEN');
+
+2)WAQTD emp details, if emp earning more than 2000 but less than 5000, as ANALYST or MANAGER in deptno 20 or 30 and also hired after year 81.
+select * from emp
+where sal > 2000 and sal < 5000 and job in ('ANALYST', 'MANAGER') and deptno in (20,30) and hiredate >= '01-JAN-82';
+
+3)WAQTD emp details, if emp name is SMITH, or ALLEN, or WARD and earning some comm and working on deptno 20 or 30 and hired before year 83
+select * from emp
+where ename in ('SMITH', 'ALLEN', 'WARD') and comm is not null and deptno in (20,30) and hiredate < '01-JAN-83';
+
+4) WAQTD emp details, except CLERK, MANAGER, ANALYST.
+select * from emp
+where job not in ('CLERK', 'MANAGER', 'ANALYST');
+
+5)WAQTD ename, sal, deptno and job except CLERK, MANAGER, ANALYST also except who worked in deptno 20 and 30.
+select ename, sal, deptno, job 
+from emp
+where job not in ('CLERK', 'MANAGER', 'ANALYST') and deptno not in (20,30); 
+
+6) WAQTD emp details, who are not earning any commision but working in same dept as CLERK and SALESMAN except emp who eork in dept 20 and 30
+select * from emp
+where comm is null and job in ('CLERK', 'SALESMAN') and deptno not in (20,30);
+
+7) WAQTD emp details except who are hired from year 82 and to year 85
+select * from emp
+where hiredate not between '01-JAN-82' and '31-DEC-85';
+
+8) WAQTD emp details, if name starts with S but ends with T.
+select * from emp
+where ename like 'S%T';
+
+9) WAQTD emp details, if emp name's 2nd character is A.
+select * from emp
+where ename like '_A%';
+
+10) WAQTD ename, sal, hiredate, if ename 3rd last character is M.
+select ename, sal, hiredate
+from emp
+where ename like '%M__';
+
+11) WAQTD emp details, if emp name contains exactly 6 characters.
+select * from emp
+where ename like '______';
+
+12) WAQTD emp details, if emp is hired on april.
+select * from emp
+where hiredate like '%APR%';
+
+13) WAQTD emp details, if emp name starts with vowel.
+select * from emp
+where (ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%'); 
+
+14) WAQTD emp details, except emp where name starts with A also except ends with A.
+select * from emp 
+where ename not like 'A%A' 
+
+15) WAQTD emp details, except emp where name starts with A and S.
+select * from emp 
+where ename not like 'A%' and ename not like 'S%';
+
+16) WAQTD emp details, except whose name starts with vowel but ends with vowel.
+select * from emp
+where (ename not like 'A%' or ename not like 'E%' or ename not like 'I%' or ename not like 'O%' or ename not like 'U%' ) and (ename like '%A' or  ename like '%E' or ename like '%I' or ename like '%O' or ename like '%U');
+
+17) WAQTD emp details, except whose name starts with consonants but ends with vowel.
+select * from emp
+where (ename like 'A%' or ename like 'E%' or ename like 'I%' or ename like 'O%' or ename like 'U%' ) and (ename like '%A' or  ename like '%E' or ename like '%I' or ename like '%O' or ename like '%U');
+
+Function:- 
+Single Row Function(SRF):-
+1)Charecter Function
+2)Number Function
+3)Date Function
+4)Special Function
+
+Charecter Function:- 
+upper():-
+1)WAQT convert all the emp names in Uppercase.
+select upper(ename) from emp; 
+2)WAQT convert your name in upper case.
+select upper('Rudra') from dual;
+
+lower():-
+1)WAQT convert all the emp names and jobs in lower case.
+select lower(ename), lower(job) from emp;
+2)WAQT convert your name in lower case.
+select lower('Ajit') from dual;
+
+initcap():- 
+select initcap(ename), lower(job) from emp;
+
+concat():- || 
+1) WAQTD Hi before all the emp name.
+select concat('Hi ', ename) from emp;
+2)WAQTD 'Hi' before all the emp names along with display "Your Designation is", for everyone's designation.
+select concat(concat(concat('Hi ', ename), ' Your Designation is '), job) from emp;
+3)WAQTD 'Hey' before emp name along with 'Your salary is ' for salary and 'Your department is ' for department.
+select concat(concat(concat(concat(concat('Hey ', ename), ' Your salary is '), sal), ' Your Department nu is '), deptno) from emp;
+
+4)WAQTD 'Hey' brfore emp name and also display 'Your salary hiked upto 10%, salary must be displayed.
+select 'Hey ' || ename || ' Your salary hiked upto 10% ' || (sal+(sal+10/100)) as Salary from emp;
+
+reverse():-
+select reverse(ename) from emp;
+
+length():-
+select length(ename) from emp;
+1) WAQTD enames and number of characters present in their name for ALLEN and WARD.
+select ename, length(ename) from emp
+where ename in ('ALLEN', 'WARD');
+2)WAQTD enames for those who have 5 or 6 characters in their names.
+select ename from emp
+where length(ename) in (5,6);
+
+trim(leading/trailing/both):-
+1)select trim(leading 'p' from 'pop') from dual;
+2)select trim(trailing 'p' from 'pop') from dual;
+3)select trim(both 'p' from 'pop') from dual;
+
+replace(str, searchValue, replaceValue):- 
+1) WAQTD ename, if emp name contains character 'R' replace with 'D'.
+select replace(ename, 'R', 'D') from emp;
+
+2) WAQTD the no of character 'A' present in emp name.
+select length(ename) - length(replace(ename, 'A')) from emp;
+
+3) WAQTD emp name also remove the character 'A' from all the ename in dept 10 and 20.
+select ename, replace(ename, 'A') from emp
+where deptno in (10,20);
+
+translate():-
+1) select translate('Bhubaneswar', 'B', 'Z') from dual;
+2) select translate('Bhubaneswar', 'B', ' ') from dual;
+3) select translate('Bhubaneswar', 'Bhu', 'Z') from dual;
+4)select translate('BhuBaneswar', 'B', 'Z') from dual;
+
+substr():- 
+substr(mainString, starting Index, nos of characters)
+select substr(ename, 1, 3) from emp;
+1)WAQTD last 4 characters of emp names
+select substr(ename, -4) from emp;
+
+2)WAQTD last character of job
+select substr(job, -1) from emp; 
+
+3)WAQTD ename and display the last 3 characters of job in reverse
+select ename, reverse(substr(job, -3)) from emp;
+
+4)SUMIT o/p- IT
+select substr('SUMIT', -2) from dual;
+
+5)SUMIT o/p- TI
+select reverse(substr('SUMIT', -2)) from dual;
+
+5)SUMIT o/p- IM
+select reverse(substr('SUMIT', 3, 2)) from dual;
+
+6) WAQTD ename, if emp name ends with A or R.
+select ename from emp 
+where substr(ename, -1) in ('A', 'R');
+
+instr():-
+instr(mainString, searchValue, starting index, no of occurance)
+select ename from emp
+where instr(ename, 'A', 1, 1) !=0;
+
+1) WAQTD ename if the job contains at least 2S
+select ename from emp
+where instr(job, 'S', 1, 2) !=0;
+
+2) WAQTD name, job, hiredate if name conatins exactly 2 A.
+select ename, hiredate, job
+from emp
+where instr(ename, 'A', 1,2) !=0 ;
+
+3) WAQTD hiredate if job conatins at least 2 A.
+select hiredate, ename from emp
+where instr(job, 'A', 1, 2)=0 ;
+
+2) Number Function:-
+mod()- 
+mod(10,3) -> 1
+1)WAQTD ename, job if the emp name contains even characters.
+select ename, job from emp
+where mod(length(ename), 2) = 0;
+
+2) WAQTD ename, job if the emp name contains odd characters.
+select ename, job from emp
+where mod(length(ename), 2) != 0;
+
+round():- 
+select round(10.4) from dual;
+select round(10.6) from dual;
+select round(10.6666, 1) from dual;
+select round(10.1234, 1) from dual;
+select round(10.145, 2) from dual;
+
+trunc():- 
+select trunc(44.4) from dual;
+select trunc(44.4, 1) from dual;
+select trunc(44.4, 2) from dual;
+select trunc(44.4, -1) from dual;
+
+ceil():-
+select ceil(15.3) from dual;
+select ceil(15.443) from dual;
+
+sqrt():- 
+select sqrt(9) from dual;
+select sqrt(225) from dual;
+select trunc(sqrt(50)) from dual;
+select ceil(sqrt(50)) from dual;
+
+power():-
+select power(2,2) from dual;
+select power(15,2) from dual;
+select power(15,-2) from dual;
+
+abs():- 
+select abs(-2) from dual;
+select abs(-2.2) from dual;
+
+Date Function:- 
+sysdate
+current_date
+systimestamp
+
+1) WAQTD the date after 10 days from today.
+select current_date+ 10 from dual;
+
+add_months(date, value):- 
+1) WAQTD ename and hiredate with 12 months to the hiredate.
+select ename, hiredate, add_months(hiredate, 12) from emp;
+
+2) WAQTD the date after 5 years from today.
+select add_months(current_date , 60) from dual;
+
+months_between(date, date):-
+1) WAQTD ename, hiredate and experience of the emp.
+select ename, hiredate, months_between(current_date, hiredate) as exp from emp;
+
+2) WAQTD emp name and hiredate if the emp experience is more than 40 years.
+select ename, hiredate, round(months_between(current_date, hiredate)/12) as exp from emp
+where round(months_between(current_date, hiredate)/12) > 44;
+
+last_day():-
+1)WAQTD the last date from current_date.
+select last_day(current_date) from dual;
+
+2)WAQTD the last day of next month.
+select last_day(add_months(current_date, 1)) from dual;
+
+3) WAQTD the first day and last day of previous month.
+select last_day(add_months(current_date, -2))+1 as first, last_day(add_months(current_date, -1)) as last from dual;
+
+extract():- 
+select extract(year from hiredate) from emp;
+
+1) WAQTD the month where smith is hired.
+select extract(month from hiredate) from emp
+where ename = 'SMITH';
+
+Special Function:-
+General Functions:- 
+nvl, nvl2
+
+1)WAQTD ename, sal, commision and total salary for all the emp.
+select ename, sal, comm, sal+nvl(comm, 0) from emp;
+
+2)WAQTD ename, comm, if the emp earns some commision then display as "Earning Some Commision" else 'No Commision'.
+select ename, comm, nvl2(comm, 'Earning Some Commision', 'No Commision') from emp;
+
+Q) WAQTD the details of emp whose name starts with 'A' and works in the same department as BLAKE.
+select * from emp
+where ename like 'A%' and deptno = (select deptno from emp
+									where ename = 'BLAKE');
+									
+Q)WAQTD ename, sal and designation of emp whose anual sal is more than SMITH and less than KING.
+select ename, sal, job from emp
+where (sal*12) > (select sal from emp where ename = 'SMITH')
+	and (sal*12) < (select sal from emp where ename = 'KING');
+	
+Q)WAQTD no of emp earning more than SMITH and less than MARTIN and hired after JAMES and name ends with S and also earning some commision.
+select count(*) from emp
+where sal > (select sal from emp where ename='SMITH')
+	and sal < (select sal from emp where ename = 'MARTIN')
+	and hiredate > (select hiredate from emp where ename='JAMES')
+	and ename like '%S' and comm is not null;
+	
+Case 2:-
+Q)WAQTD emp details who are working in New York.
+select * from emp
+where deptno = (select deptno from dept where loc = 'NEW YORK');
+
+Q)WAQTD dept name of emp who are working as CLERK.
+select dname from dept 
+where deptno in (select deptno from emp
+				where job = 'CLERK');
+
+Q)WAQTD dept details if the emp earning more than 2000
+select * from dept 
+where deptno in (select deptno from emp where sal>2000);
+
+Q)WAQTD dept details if the emp earning more than 2000 but less than KING
+select * from dept 
+where deptno in (select deptno from emp where sal>2000
+	and sal< (select sal from emp where ename='KING'));
+	
+Case 3:-
+select * from emp
+where sal = (select max(sal) from emp);
+
+select * from emp
+where sal = (select min(sal) from emp);
+
+Q)WAQTD 2nd maximum sal
+select max(sal) from emp
+where sal < (select max(sal) from emp);
+
+Q)WAQTD details of emp getting 3rd max sal.
+select * from emp 
+where sal = (select max(sal) from emp
+where sal < (select max(sal) from emp 
+where sal < (select max(sal) from emp)));
+
+Q) Display department details of emp if getting highest sal
+select * from dept
+where deptno = (select deptno from emp 
+where sal = (select max(sal) from emp));
+
+Q)Display details of the emp who got hired as last emp
+select * from emp
+where hiredate = (select max(hiredate) from emp);
+
+Case 4:-
+Q)Display emp details if emp earning more than SMITH(when we have more than one smith) .
+select * from emp
+where sal> all (select sal from emp
+	where ename = 'SMITH');
+	
+Q) Display details of emp whose sal is more than the maximum sal of each dept.
+select * from emp
+where sal> all (select max(sal) from emp
+	group by deptno);
+	
+Q) Display details if emp earning less than at least one SALESMAN.
+select * from emp 
+where sal < any (select sal from emp
+	where job='SALESMAN');
+	
+Q)Display ename, sal, hiredate if emp earning sal moe than deptno 20 but less than deptno 10.
+select ename, sal, hiredate from emp
+where sal > any (select sal from emp where deptno = 20)
+	and sal < any (select sal from emp where deptno = 10);
+	
+Case 5:- 
+Q) Display smith's manager name.
+select ename from emp 
+where empno = (select mgr from emp 
+		where ename='SMITH');
+		
+Q) Display MARTIN's manager also check if his name starting with consonants.
+select ename from emp
+where empno = (select mgr from emp
+	where ename='MARTIN') and 
+	substr(ename, 1,1) not in ('A', 'E','I', 'O','U');
+	
+Q) Display SMITH's manager's manager name.
+select ename from emp
+where empno = (select mgr from emp
+	where empno = (select mgr from emp
+	where ename = 'SMITH'));
+	
+Joins:-
+1)Inner Join/EQUI Join
+2)Outer Join
+	-Left Outer Join
+	-Right Outer Join
+	-Full Outer Join
+3)Cross Join
+4)Natural Join
+5)Self Join
+
+1)Inner Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 inner join table 2
+on join-condition;
+
+Q)Display all details from both emp and dept table
+select * 
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select * 
+from emp inner join dept
+on emp.deptno = dept.deptno;
+
+Q)Display emp name and dept name
+select ename, dname
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select ename, dname
+from emp inner join dept
+on emp.deptno = dept.deptno;
+
+Q)Display ename, dname if emp name start from A
+select ename, dname
+from emp, dept
+where emp.deptno= dept.deptno and 
+	ename like 'A%';
+	
+2)Outer Join
+a)Left Outer Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join condition (+);
+
+ANSI-Syntax:
+select */column-name
+from table1 left outer join table2
+on join-condition;
+
+Q)Display ename and their dname and also display the empname if emp not working in any dept.
+select ename, dname 
+from emp, dept
+where emp.deptno = dept.deptno (+);
+
+select ename, dname 
+from emp left outer join dept
+on emp.deptno = dept.deptno;
+
+b)Right Outer Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where (+) join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 right outer join table2
+on join-condition;
+
+Q)Display ename and their dname also display the deptname if no emp is working in that dept.
+select ename, dname 
+from emp, dept
+where emp.deptno(+) = dept.deptno;
+
+select ename, dname 
+from emp right outer join dept
+on emp.deptno = dept.deptno;
+
+c)Full Outer Join
+ANSI-Syntax:
+select */column-name
+from table1 full outer join table2
+on join-condition;
+
+Q)Display ename, dname also display the ename if emp don't work in any dept also include deptname if no emp is working in the dept.
+select ename, dname
+from emp full outer join dept
+on emp.deptno=dept.deptno;
+
+3)Cross Join
+Oracle-Syntax:
+select */column-name
+from table1, table2, table3...;
+
+ANSI-Syntax:
+select */column-name
+from table1 cross join table2 cross join table3.....;
+
+Q)Display ename and dname for each table.
+select ename, dname 
+from emp, dept;
+
+select ename, dname
+from emp cross join dept;
+
+Q)Display ename, dname, hisal for each table
+select ename, dname, hisal
+from emp, dept, salgrade;
+
+select ename, dname, hisal
+from emp cross join dept cross join salgrade;
+
+4)Natural Join
+ANSI-Syntax:
+select */column-name 
+from table1 natural join table2 natural join table3..;
+
+ex: select ename, dname 
+	from emp natural join dept;
+	
+ex: select ename, hisal
+	from emp natural join salgrade;
+	
+5) Self Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 join table2
+on join-condition;
+
+Q)Display emp name and his manages name.
+select e.ename, m.ename
+from emp e, emp m
+where e.mgr = m.empno;
+
+Q)Display ename and his manager name and his manager name.
+select e.ename, m1.ename, m2.ename
+from emp e, emp m1, emp m2
+where e.mgr = m1.empno and
+m1.mgr = m2.empno;
+
+Set Operators:
+Union-
+select ename from emp
+union
+select dname from dept;
+
+select ename from emp
+union
+select job from emp;
+
+Union all-
+select ename from emp
+union all
+select job from emp;
+
+select mgr from emp
+union all
+select deptno from dept;
+
+Intersect-
+select ename from emp
+intersect
+select dname from dept;
+
+select deptno from emp
+intersect
+select deptno from dept;
+
+select empno from emp
+intersect
+select mgr from emp;
+
+Minus-
+select empno from emp
+minus
+select mgr from emp;
+
+select deptno from emp
+minus
+select deptno from dept;
+
+select ename from emp
+minus
+select dname from dept;
+
+Co-related Subquery:-
+Q) WAQTD dname where employee are working.
+select d.dname from dept d
+where d.deptno in (select e.deptno from emp e
+	where d.deptno = e.deptno);
+	
+Q) WAQTD dname where employee are not working.
+select d.dname from dept d
+where d.deptno not in (select e.deptno from emp e
+	where d.deptno = e.deptno);
+	
+Q)Find the 2nd maximum sal
+select e1.sal from emp e1
+where 1 = (select count(distinct e2.sal) from emp e2
+	where e1.sal < e2.sal);
+	
+Case Expression:
+select col
+case 
+	when condition1 then value
+	when condition2 then value
+	when condition3 then value
+	else value
+end
+from table_name;
+
+select ename, sal,
+case 
+	when sal > 2000 then 'Earning good salary'
+	else 'Less salary'
+end as stmnt
+from emp;
+
+select ename, sal,
+case 
+	when sal >= 3000 then 'Earning good salary'
+	when sal >= 2000 then 'Salary is ok'
+	when sal >= 1000 then 'Less salary'
+	else 'Chillar'
+end as statement
+from emp;
+
+
+create table example (
+	empId int primary key,
+	ename varchar2(20),
+	age int check (age>=18),
+	mail varchar2(20) unique,
+	status varchar2(10) default 'Active');
+	
+insert into example values(1, 'Saurbh', 22, 'saurav@gmail.com', 'Inactive');
+insert into example values(2, 'Sumit', 19, 'sumit@gmail.com', '');
