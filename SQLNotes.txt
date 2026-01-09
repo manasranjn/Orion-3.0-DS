@@ -131,6 +131,6 @@ o/p- (1)no of rows
 Q9)WAQTD details of employee along with annualsal, if annualsal is 36000.
 ans- select emp.*,sal*12 as annualsal from emp where sal*12=36000;
 o/p- (2)no of rows
-Q10)WAQTD details of employee along with halfterm salary, if halfterm salary of employee is 40000.
-ans- select emp.*,sal*6 as halfterm from emp where sal*6=40000;
+Q10)WAQTD details of employee along with halfterm salary, if halfterm salary of employee is 30000.
+ans- select emp.*,sal*6 as halfterm from emp where sal*6=30000;
 o/p- (0)no of rows	
