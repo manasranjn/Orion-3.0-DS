@@ -134,3 +134,141 @@ o/p- (2)no of rows
 Q10)WAQTD details of employee along with halfterm salary, if halfterm salary of employee is 30000.
 ans- select emp.*,sal*6 as halfterm from emp where sal*6=30000;
 o/p- (0)no of rows	
+
+Chapter-5
+----------
+OPERATORS:
+-Operator is uesd to perform operation between operands.
+Types of Operators:
+1)Arithmatic operator:(+,-,*,/)
+2)Relational/Comparision operator:(>,<,>=,<=,!=(<>))
+3)Special operator: is, is not, in, not in, like, not like, between, not between.
+
+1)Arithmatic operator: 
+----------------------
+-Used to perform arithmatic operation between the operand.
+
+Q1)WAQTD employee name,sal and also display the salary after 10% hike.
+ans- select ename, sal, sal+sal*10/100 as hike from emp; 
+
+Q2)WAQTD employee name,sal and also display the salary after 20% deduction.
+ans- select ename, sal, sal-sal*20/100 as deduct from emp;
+
+Q3)WAQTD employee name,sal and also display the salary after 10% hike, also display their names if and only if the hiked salary is more than 2000.
+ans- select ename, sal, sal+sal*10/100 as hike from emp
+	where sal+sal*10/100 > 3000;
+
+
+Relational operator: 
+--------------------
+-Used to compare the given operands.(<,>,<=,>=,!=(<>))
+Q1)WAQTD employee details, if employee earn more than 3000.
+ans- select * from emp 
+	 where sal>3000;
+
+Q2)WAQTD employee details, if employee earn less than 1000.
+ans- select * from emp 
+	 where sal<1000;
+
+Q3)WAQTD employee details, except who are working in deptno 10.
+ans- select * from emp
+	where deptno != 10;
+
+Q4)WAQTD employee details, except who works as ANAYST.
+ans- select * from emp 
+	 where job != 'ANAYST';
+
+Q5)WAQTD employee details, except whoes mgr number is 7698.
+ans- select * from emp 
+	 where mgr !=7698;
+
+Q6)WAQTD employee details, if employee working as manager.
+ans- select * from emp 
+	 where job = 'MANAGER';
+
+Q7)WAQTD employee details, if employee earning 3000 or more than 3000.
+ans- select * from emp
+	where sal >= 3000;
+
+Logical Operator:
+----------------
+AND: 
+-If all the conditions are true, it returns true(select the records) else false(reject the records)
+
+Q1)WAQTD employee name, sal and deptno, if employee earning more than 2000 and works in deptno 10.
+ans- select ename,sal,deptno 
+	 from emp 
+	 where sal>2000 and deptno=10;
+
+Q2)WAQTD employee details, if employee number is 7902 and also works as ANALYST.
+ans- select * from emp
+	where empno = 7902 and job = 'ANALYST';
+
+Q3)WAQTD employee details, if employee mgr number is 7839 and also comm is more than 300.
+ans- select * from emp
+	where empno = 7839 and comm > 300;
+
+Q4)WAQTD employee details, if employee hired on 03-DEC-81 and works in deptno 10.
+ans- select * from emp
+	where hiredate = '03-DEC-81' and deptno = 10;
+
+Q5)WAQTD employee details, if employee working as ANAYST in deptno 20.
+ans- 
+
+Q6)WAQTD employee details, if employee earn more than 1000 but less than 3000.
+ans-
+
+OR:
+-If any of the condition is true, it returns true.
+
+Q1)WAQTD employee details, if employee works in deptno 10 or 20 or 30 or 40.
+ans- select * from emp where deptno=10 or deptno=20 or deptno=30 or deptno=40;
+
+Q2)WAQTD employee name, sal and job works as SALESMAN or MANAGER.
+
+Q3)WAQTD employee name,sal,mgr,deptno and job, if employee name is SMITH or MILLER.
+
+Q4)WAQTD employee number,name and job, if employee num ber is 7566 or 7902.
+
+Q5)WAQTD employee name, if employee mgr is 7839 or 7639.
+
+
+
+
+
+
+
+
+
+
+
+
+Combination of (AND,OR)
+Q1)WAQTD employee name, sal, deptno and job works as ANAYST and also in deptno 10 or 20.
+	 
+Q2)WAQTD employee name, sal, deptno and job, if employee earning more than 3000 as clerk or salesman or manager.
+	 
+Q3)WAQTD employee name, sal and job works as analys or president on deptno 10 or 20 and also employee mgr number is 7839.
+	 
+Q4)WAQTD employee details, if employee earn less than 3000 but works in deptno 20 or 30 and also except who works as MANAGER or PRESIDENT.
+
+NOT:
+-Used to give the opposite values.
+Syntax: not column-name='VALUE';
+
+Q1)WAQTD employee details, except employee who works in deptno 20.
+ans- select * from emp 
+	 where not deptno = 20;
+
+Q2)WAQTD employee details, except employee who works as clerk also except salesman.
+ans- select * from emp 
+	 where not job = 'CLERK' and not job= 'SALESMAN';
+
+Q3)WAQTD employee name and salary, except who are earning more than 3000.
+
+Combination(AND,OR,NOT):
+Q1)WAQTD employee name,sal and deptno, if employee earning more than 2000 but less than 4000 and working as clerk or salesman except whoes deptno is 20.
+
+Q2)WAQTD employee name,sal,job and deptno, if employee work in deptno 10 or 20, as clerk or manager except smith and allen.
+
+Q3)WAQTD employee details, if employee earn more than 3000 and also works as president in deptno 10 or 20, except martin and miller.
