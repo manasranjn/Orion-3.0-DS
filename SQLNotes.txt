@@ -232,25 +232,18 @@ Q4)WAQTD employee number,name and job, if employee num ber is 7566 or 7902.
 
 Q5)WAQTD employee name, if employee mgr is 7839 or 7639.
 
-
-
-
-
-
-
-
-
-
-
-
 Combination of (AND,OR)
 Q1)WAQTD employee name, sal, deptno and job works as ANAYST and also in deptno 10 or 20.
+ans- select ename, sal, deptno, job from emp
+	where job = 'ANALYST' and (deptno=10 or deptno=20);
 	 
 Q2)WAQTD employee name, sal, deptno and job, if employee earning more than 3000 as clerk or salesman or manager.
 	 
 Q3)WAQTD employee name, sal and job works as analys or president on deptno 10 or 20 and also employee mgr number is 7839.
 	 
 Q4)WAQTD employee details, if employee earn less than 3000 but works in deptno 20 or 30 and also except who works as MANAGER or PRESIDENT.
+ans- select * from emp
+	where sal < 3000 and (deptno=30 or deptno=20) and (not job='MANAGER' or not job='PRESIDENT');
 
 NOT:
 -Used to give the opposite values.
@@ -267,8 +260,97 @@ ans- select * from emp
 Q3)WAQTD employee name and salary, except who are earning more than 3000.
 
 Combination(AND,OR,NOT):
-Q1)WAQTD employee name,sal and deptno, if employee earning more than 2000 but less than 4000 and working as clerk or salesman except whoes deptno is 20.
+Q1)WAQTD employee name,sal and deptno, if employee earning more than 2000 but less than 4000 and working as clerk or analyst except whoes deptno is 30.
+ans- select * from emp
+	where (sal > 2000 and sal < 4000) and (job = 'CLERK' or job='ANALYST') and not deptno = 20;
 
 Q2)WAQTD employee name,sal,job and deptno, if employee work in deptno 10 or 20, as clerk or manager except smith and allen.
 
 Q3)WAQTD employee details, if employee earn more than 3000 and also works as president in deptno 10 or 20, except martin and miller.
+
+Date :
+When we deal with dates we have to follow this-
+1)on =
+2)before <
+3)after >
+4)from >=
+
+Q1)WAQTD employee details, if employee hired on '23-JAN-82'.
+ans- select * from emp
+	 where hiredate='23-JAN-82';
+
+Q2)WAQTD employee details, if employee hired after '03-DEC-81'.
+ans- select * from emp
+	 where hiredate>'03-DEC-81';
+
+Q3)WAQTD employee details, if employee hired after year 81.
+ans- select * from emp
+	 where hiredate > '31-DEC-81';
+(or) select * from emp
+	where hiredate >= '01-JAN-82';
+
+Q4)WAQTD employee details, if employee hired after year 83 and works in deptno 10 or 20.
+ans- select * from emp
+	where hiredate > '31-DEC-83' and (deptno= 10 or deptno = 20);
+
+Q5)WAQTD employee details, if employee hired before year '10-JAN-81'.
+
+Q6)WAQTD employee details, if employee hired before year 85 and works as clerk or manager in deptno 10 or 20.
+
+Q7)WAQTD employee details, if employee hired after year 81 but hired before year 85.
+
+Q8)WAQTD employee details, if employee hired from 81 and except salesman.
+
+Special Operator:
+-----------------
+IS:
+-Used to evalute null values inside the specific column.
+syntax: column-name is null;
+
+Q1)WAQTD employee details, if employee dont have any reporting manager.
+ans- select * from emp
+	 where mgr is null;
+
+Q2)WAQTD employee name,sal and comm, if employee not earning any commission.
+ans- select ename,sal,comm 
+	 from emp
+	 where comm is null;
+
+Q3)WAQTD employee details, who are not working in any dept.
+
+Q4)WAQTD employee details, except employee who work as clerk also except salesman and employee's dont earn any commission.
+ans- select * from emp
+	where not job = 'CLERK' and not job='SALESMAN' and comm is null;
+
+IS NOT:
+-Used to evalute not null values.
+Syntax: column-name is not null;
+
+Q1)WAQTD employee details who are earning some salary in deptno 10.
+ans- select * from emp 
+	 where sal is not null and deptno = 10;
+
+Q2)WAQTD employee details who have reporting manager.
+ans- select * from emp 
+	 where mgr is not null;
+
+Q3)WAQTD employee details, who are earning some commission.
+
+IN:
+-Used to evalute multiple values in specified column.
+-It selects the data or values given in RHS.
+Syntax: column-name in (value1,value2...);
+
+Q1)WAQTD employee details, if employee works in dept 10 or 20.
+ans- select * from emp
+	 where deptno in (10,20);
+
+Q2)WAQTD employee name and sal, if employee name is SMITH or ALLEN or MARTIN.
+ans- select * from emp
+	where ename in ('SMITH', 'ALLEN', 'MARTIN');
+
+Q3)WAQTD employee details, if employee earning more than 2000 but less than 5000, as analyst or manager in deptno 20 or 30 and also hired after year 81.
+ans- select * from emp
+	where sal > 2000 and sal < 5000 and job in ('ANALYST', 'MANAGER') and deptno in (20,30) and hiredate > '31-DEC-81';
+
+Q4)WAQTD employee name and deptno, if employee is working in dept 10 or 20 or 30 or 40 or 50.
