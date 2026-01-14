@@ -39,7 +39,7 @@ syntax: select */distinct column-name expression/aliasing
         from table-name;
 order of execution: 1)from
 					2)select
-note: * selects all the column, once the column is selcted by default values get selcted.
+note: * selects all the column, once the column is select by default values get select.
 -If user gives the table-name which is not present in the database, then user gets an error(table/view dosen't exist,)
 -If user gives the col-name which is not present in the table, then user gets an error as invalid-identifier.
 -Query: its a request sent to database to fetch the required data.
@@ -354,3 +354,53 @@ ans- select * from emp
 	where sal > 2000 and sal < 5000 and job in ('ANALYST', 'MANAGER') and deptno in (20,30) and hiredate > '31-DEC-81';
 
 Q4)WAQTD employee name and deptno, if employee is working in dept 10 or 20 or 30 or 40 or 50.
+
+NOT IN: Used to evalute multiple values in a specific column.
+-It rejects the values given in RHS and selects all the other values in specified column.
+-In LHS pass 1 argument, RHS we can pass one or more values.
+Syntax: column-name not in (value1,value2.....);
+
+Q1)WAQTD employee details, except who works in deptno 10 and 20.
+ans- select * from emp
+	 where deptno not in(10,20);
+
+Q2)WAQTD employee details, except clerk,manager,analyst and salesman.
+ans- select * from emp
+	where job not in ('CLERK', 'MANAGER','ANALYST','SALESMAN');
+
+Q3)WAQTD employee name,sal,deptno and job,except clerk and salesman, also except who works in deptno 10 and 30.
+
+Q4)WAQTD employee details, who are not earning any commission but works in some department as clerk or salesman, except employee's who works in deptno 20 and 30.
+ans- select * from emp
+    where comm is null and deptno is not null and job in ('CLERK','SALESMAN') and deptno not in (20,30);
+
+BETWEEN:
+-Used for range purpose.
+Syntax: column-name between value1 and value2;
+
+value1 and value2 are given ranges.
+(value1 is lower range, value2 is higher range)
+
+Q1)WAQTD employee name nad sal, if employee earning 1000 to 3000.
+ans- select ename,sal from emp 
+	 where sal between 1000 and 3000;
+
+Q2)WAQTD employee name and hiredate, if employee hiredate from year 81 to year 85.
+ans- select ename,hiredate from emp 
+	 where hiredate between '01-JAN-81' and '31-DEC-85' ;
+
+Q3)WAQTD employee name and  hiredate, if employee hired from year 80 to year 81 or from year 85 to year 87.
+ans- select ename, hiredate from emp
+     where hiredate between '01-JAN-80' and '31-DEC-81' or hiredate between '01-JAN-85' and '31-DEC-87' ;
+
+NOT BETWEEN:
+-Opposite to between operator.
+Syntax: column-name not between value1 and value2;
+
+Q1)WAQTD employee name and sal, except who are earning from 1000 to 3000.
+ans- select ename,sal from emp 
+	 where sal not between 1000 and 3000;
+
+Q2)WAQTD employee name and hiredate, except who are hired from year 81 to year 85.
+ans- select ename,hiredate from emp 
+	 where hiredate not between '01-JAN-81' and '31-DEC-85' ;
