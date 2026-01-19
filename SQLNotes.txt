@@ -533,3 +533,91 @@ ans- select ename from emp
 	 ename not like '%O' and
 	 ename not like '%U');
 o/p- 2 rows
+
+-:Functions:-
+--------------
+-Set of instruction which is used to perform some specific task.
+
+Function contains:
+1)Function name
+2)Number of arguments
+3)Return type
+
+There are two types of function:
+1)SRF(Single row function)
+2)MRF(Multi row function)
+
+1)SRF():
+-It takes n no. of inputs and executes and produce n nu. of output.
+-Single row function can be used in 
+	select
+	where
+	order by
+
+Types of SRF():
+1)Character Function
+2)Number Function
+3)Date Function
+4)Special Function
+
+Character Function:
+-It takes character(alphanumeric) input and produce the output either alphabets or numbers.
+
+upper():- Used to convert the data into uppercase.
+Syntax: upper(arg1)
+
+Q1)WAQ to convert all the employee names into upper case.
+ans- select upper(ename) from emp;
+Q2)WAQ to convert all the employee name s and job into upper case.
+ans- select upper(ename), upper(job) from emp;
+Q3)WAQ to convert your name into upper case.
+ans- select upper('your name') from dual;
+
+NOTE:
+-Dual table is dummy table present iside the database, with 1 row 1 column, by default it contains value X with varchar2(1) type.
+
+lower():- Used to convert the data into lowercase.
+Syntax: lower(arg1)
+
+Q1)WAQ to convert all the employee names into lowercase.
+ans- select lower(ename) from emp;
+Q2)WAQ to convert Hello Everyone into lowercase.
+ans- select lower('Hello Everyone') from dual;
+Q3)WAQTD details of employee SMITH.(with irrespective of case)
+ans- select * from emp where lower(ename)='smith';
+ans- select * from emp where ename=upper('sMith');
+
+initcap():- Used to convert all the words 1st character as uppercase.
+Syntax: initcap(arg1)
+ex- select initcap('e sala cup namde') from dual;
+o/p- E Sala Cup Namde
+ex- select initcap('you are beautiful') from dual;
+o/p- You Are Beautiful
+
+Character Manipulation:-
+length():- It is used to display the number of characters present in the given data.
+Syntax: length(arg1)
+
+Q1)WAQTD employee name and also no. of characters present in their names.
+ans- select ename, length(ename) from emp;
+Q2)WAQTD employee details if the employee name exactly contains 5 characters in their name.
+ans- select * from emp 
+	 where length(ename)=5;
+
+Q3)WAQTD employee name and no of characters present in their name for allen and ward.
+ans- select ename, length(ename) from emp
+	 where ename in('ALLEN','WARD');
+
+Q4)WAQTD employee names whoes length is 4 or 5.
+ans- select ename from emp 
+	 where length(ename) in(4,5);
+
+reverse():- Used to reverse the given data.
+Syntax: reverse(arg1)
+
+Q1)WAQTD to reverse all the employee name.
+ans- select reverse(ename) from emp; 
+Q2)WAQTD to reverse Hello.
+ans- select reverse('Hello') from dual;
+Q3)WAQTD the reverse of your name.
+ans- select reverse('Manas') from dual;
