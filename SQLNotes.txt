@@ -621,3 +621,115 @@ Q2)WAQTD to reverse Hello.
 ans- select reverse('Hello') from dual;
 Q3)WAQTD the reverse of your name.
 ans- select reverse('Manas') from dual;
+
+concat():- Used to merger the given string or data.
+Syntax: concat(arg1,arg2)
+-concat operator (||) can be used in select clause.
+
+Q1)WAQTD 'hi' before all the employee names.
+ans- select concat('Hi ',ename) as Greet from emp;
+
+Q2)WAQTD 'hi' before all the employee names along with display 'your designation is', particular designation must displayed.
+ans- select concat(concat(concat('Hi ',ename),' Your designation is '),job) as Message from emp;
+
+Q3)WAQTD 'hi' for all the employee name and also display 'your salary is hiked upto 10%' with 10% salary must be displayed.
+ans- select concat(concat(concat('Hi ',ename), 'Your salary is hiked upto 10% '), sal+(sal*10/100)) as data from emp;
+
+trim():-Used to trim or remove the particular character from the given string.
+Syntax: trim(leading/trailing/both 'char' from string)
+
+ex:- select trim(leading 'P' from 'PPT') from dual;
+o/p- T
+ex2:- select trim(trailing 'M' from 'ADAM') from emp;
+o/p- ADA
+ex3:- select trim(both 'P' from 'POPP') from dual;
+o/p- O
+
+replace():- Used to replace the given string.
+Syntax:- replace(arg1,arg2,arg3)
+arg1- main string
+arg2- search string
+arg3- replace string
+NOTE: If you dont pass the 3rd argumrnt, 3nd argument(search string) will removed from the main string(1st arg).
+
+Q1)WAQTD employee name also display if the employee name contains character 'R' replace with it 'D'.
+ans- select ename, replace(ename, 'R','D') from emp;
+Q2)WAQTD the no of character 'A' present in the employee name.
+ans- select length(ename)-length(replace(ename,'A')) from emp;
+Q3)WAQTD employee name and job also replace the character 'K' from job to character 'MMM'.
+ans- select ename,job,replace(job,'K','MMM') from emp;
+Q4)WAQTD employee name also remove the character 'A' from all the employee names in deptno 10 or 20.
+ans- select ename,replace(ename,'A') from emp where deptno in (10,20);
+o/p- 8 rows selected
+Q5)WAQTD no of 'M' present in your name.
+ans- select length('Manas')-length(replace('Manas','a')) from dual;
+Q6)WAQTD employee name and job, also replace the character 'D' to 'Z' from all job only for thoes whoe's mgr is 7788 or 7839.
+ans- select ename,job,replace(job,'D','Z')
+	 from emp where mgr in (7788,7839);
+
+translate(): It used to replace the given string, but it replace character by character.
+Syntax: translate(arg1,arg2,arg3)
+arg1:main string
+arg2:search string
+arg3:replace string
+
+ex: select translate('SMITHA','S','Z') from dual; -> ZMITHA
+	select translate('SMITHA','S',' ') from dual; ->  MITHA
+	select translate('SMITHA','SA','Z') from dual; -> ZMITH
+	select translate('SMITHA','SA','YZ') from dual; -> YMITHZ
+	select translate('SMITHA','SMT','HK') from dual; -> HKIHA
+
+Q1)WAQTD only consonants from employee names.
+ans- select replce(replace(replace(replace(replace(ename,'A'),'E'),'I'),'O'),'U') from emp;
+or 
+select translate(ename , 'AEIOU', '     ') from emp; (it add space if the any of the vowel is present)
+
+Q2)WAQTD only vowel from the employee names and all  pther character filled with space.
+ans- select translate(ename,translate(ename,'AEIOU','     '),'     ')from emp;
+
+														08-10-2023
+													09-10-2023
+instr:- Dsiplay the position of the character, it returns the index values of particular occurence.
+
+Syntax: instr(main-string, search-string, starting-index, no. of occurance)
+
+Q1)WAQTD ename if the employee name contains at least 1 'A'.
+Q2)WAQTD ename if the employee name contains at least 3 'S' in their their names.
+Q3) input:- ravi output:-2
+o/p- select instr('ravi','a',1,1) from dual;
+Q4) input:- vanivilas output:-6
+ans- select instr('vanivilas','i',1,2) from dual;
+Q5)WAQTD ename,job and hiredate if the job contains at least 2 'K'.
+Q6)WAQTD employee name, if employee
+
+4)WAQTD 'Hey' brfore emp name and also display 'Your salary hiked upto 10%, salary must be displayed.
+ans- select 'Hey ' || ename || ' Your salary hiked upto 10% ' || (sal+(sal+10/100)) as Salary from emp;
+
+reverse():-
+select reverse(ename) from emp;
+
+length():-
+select length(ename) from emp;
+1) WAQTD enames and number of characters present in their name for ALLEN and WARD.
+select ename, length(ename) from emp
+where ename in ('ALLEN', 'WARD');
+
+2)WAQTD enames for those who have 5 or 6 characters in their names.
+select ename, length(ename) as length from emp
+where length(ename) in (5,6);
+
+trim(leading/trailing/both):-
+1)select trim(leading 'p' from 'pop') from dual;
+2)select trim(trailing 'p' from 'pop') from dual;
+3)select trim(both 'p' from 'pop') from dual;
+
+replace(str, searchValue, replaceValue):- 
+1) WAQTD ename, if emp name contains character 'R' replace with 'D'.
+select ename, replace(ename, 'R', 'D') from emp;
+
+2) WAQTD the no of character 'A' present in emp name.
+select ename, length(ename) - length(replace(ename, 'A')) from emp;
+
+3) WAQTD emp name also remove the character 'A' from all the ename in dept 10 and 20.
+select ename, replace(ename, 'A') from emp
+where deptno in (10,20);
