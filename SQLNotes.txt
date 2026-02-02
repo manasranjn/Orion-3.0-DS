@@ -687,8 +687,29 @@ select translate(ename , 'AEIOU', '     ') from emp; (it add space if the any of
 Q2)WAQTD only vowel from the employee names and all  pther character filled with space.
 ans- select translate(ename,translate(ename,'AEIOU','     '),'     ')from emp;
 
-														08-10-2023
-													09-10-2023
+substr():- It is used to extract the part of the given string.
+Syntax:- substr(mainString, startIndex, no of characters)
+
+Q1) WAQTD first 3 characters from all the emp names.
+ans- select substr(ename, 1, 3) from emp;
+
+Q2) WAQTD last 3 characters of your name.
+ans- select substr('Pranab',-4) from dual;
+
+Q3)WAQTD ename, ans also display the last 3 charecter after reverse of the job.
+ans- select ename,substr(reverse(job),-3) from emp;
+
+Q4) WAQTD ename, also display the last 2 char of the emp name if emp name have exactly 5 characters.
+ans- select ename, substr(ename,-2) from emp
+where length(ename)=5;
+
+Q5) WAQTD emp name and job if ename end with R and his job ends with K.
+ans- select ename,job from emp  where ename like '%R' and job like '%K' ;
+
+Q6) WAQTD ename if ename ends with A or R.
+ans- select ename from emp where ename like '%A' or ename like '%R';
+
+
 instr:- Dsiplay the position of the character, it returns the index values of particular occurence.
 
 Syntax: instr(main-string, search-string, starting-index, no. of occurance)

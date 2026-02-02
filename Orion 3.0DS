@@ -349,8 +349,80 @@ INSERT INTO courses VALUES (103, 'React', 'Mr. Mehta');
 
 INSERT INTO enrollments VALUES (1001, 1, 101, DATE '2025-10-01');
 INSERT INTO enrollments VALUES (1002, 1, 103, DATE '2025-10-10');
+INSERT INTO enrollments VALUES (1002, 1, 103, DATE '2025-10-10');
 INSERT INTO enrollments VALUES (1003, 2, 102, DATE '2025-10-05');
 INSERT INTO enrollments VALUES (1004, 3, 101, DATE '2025-10-07');
+
+DQL- select 
+	select */distinct colName
+		expression/aliasing from table-name;
+
+	1)from
+	2)select
+
+	e.g:- select * from emp;
+		select ename, deptno from emp;
+		
+		
+Q)Write a query to display details of employee table.
+ans- select * from emp;
+
+Q)WAQTD details of department table.
+ans- select * from dept;
+
+Q)WAQTD details of salgrade.
+ans- select * from salgrade;
+
+Q)WAQTD sal, deptno, joining date of all the employees.
+ans- select sal, deptno, hiredate
+	from emp;
+
+Q)WAQTD employee name, salary, manager and commision of all the employee.
+ans- select ename, sal, mgr, comm
+	from emp;
+
+Q)WAQTD unique jobs;
+ans- select distinct job from emp;
+
+Q)WAQTD unique department numbers.
+ans- select distinct deptno from emp;
+
+Expression/Aliasing:-
+expression- sal*12
+aliasing- as/ " "
+
+e.g- select sal, sal*12 as "Anual Sal" from emp;
+
+Q)WAQTD details of employees along with anual salary.
+ans- select emp.*, sal*12 as "Anual Sal" from emp;
+
+Q)WAQTD all the details of employee along with half term salary.
+ans- select emp.*, sal*6 as "Half Term" from emp;
+
+select emp.*, sal*6 from emp;
+
+Q)WAQTD empno as eid.
+ans- select empno eid from emp;
+
+Q)WAQTD empno as eid, sal as salary, deptno as department no.
+ans- select empno eid, sal salary, deptno "department no" from emp;
+
+Q)WAQTD employee details if anual sal is more than 15000.
+ans- select emp.*, sal*12 as AnualSal from emp 
+	where (sal*12) > 15000;
+
+!= <>
+
+
+
+
+
+
+
+
+
+
+
 
 1)WAQTD emp name, sal and dept, if emp name is SMITH or ALLEN or MARTIN
 select ename, deptno, sal from emp where ename in ('SMITH', 'MARTIN', 'ALLEN');
