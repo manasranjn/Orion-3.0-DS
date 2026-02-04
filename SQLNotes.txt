@@ -825,3 +825,70 @@ select power(15,-2) from dual;
 abs():- It is used to convert the negative values.
 select abs(-2) from dual;
 select abs(-2.2) from dual;
+
+
+Date Function:- Used to perform operation based on given date data.
+Note:-
+sysdate- It gives the system date.
+current_date- It gives the current date or todays date.
+systimestamp- It gives the system's date along with time including millisecond.
+
+Q) WAQTD system date.
+ans- select sysdate from dual;
+
+Q) WAQTD current date.
+ans- select current_date from dual;
+
+Q) WAQTD today's date along with time.
+ans- select systimestamp from dual;
+
+Q) WAQTD the date after 10 days.
+ans- select current_date +10 from dual;
+
+1)add_months:- It will add the months to the given date.
+Syntax: add_months(arg1,arg2)
+arg1- date
+arg2- how many months to be added(in number)
+
+Q1)WAQTD ename and hiredate along with add 12 months to the hiredate and display it.
+ans- select ename, hiredate, add_months(hiredate,12) as "after 1 year" from emp;
+
+Q2)WAQTD the current date after 5 years.
+ans- select add_months(current_date, 60) from dual;
+
+Q3)WAQTD ename, hiredate, and job display the hiredate after two years.
+ans- select ename, hiredate, job, add_months(hiredate, 24) from emp;
+
+Q4)WAQTD ename,hiredate also display the hiredate before 3 years.
+ans- select ename, hiredate, add_months(hiredate, -36) from emp;
+
+months_between:- Used to display the difference between the given dates.
+Syntax: months_between(arg1.arg2)
+arg1,arg2 :- date
+
+Q1)WAQTD ename, hiredate and experience of the employee for all the employee.
+ans- select ename, hiredate, round(months_between(current_date,hiredate)/12) as exp from emp;
+(or) select ename, hiredate, months_between(current_date, hiredate) as exp from emp;
+
+Q2)WAQTD ename,hiredate and experience of the employee if
+the experience of the employee is more than 40 years.
+ans- select ename, round(months_between(current_date,hiredate)/12) as Age from emp where (months_between(current_date,hiredate)/12)> 40;
+
+
+last_day:- It display the last date of the given date.
+Syntax: last_day(arg1)
+
+Q1)WAQT find the last date from the current_date date.
+ans- select last_day(current_date) from dual;
+
+Q2)WAQT find the last day of the next month.
+ans- select last_day(add_months(current_date, 1)) from dual;
+
+Q3)WAQT find the first day of the next month.
+ans- select last_day(current_date)+1 from dual;
+
+Q4)WAQT find first day and last day of previous month.
+ans- select last_day(add_months(current_date, -2))+1, last_day(add_months(current_date, -1)) from dual;
+
+Q5)WAQT find the last day of 23-FEB-2004.
+ans- select last_day('23-FEB-2024') from dual;
