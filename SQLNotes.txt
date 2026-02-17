@@ -1169,17 +1169,6 @@ ans-
 Q15)WAQTD no. of employee working in each dept if the employees names ends with consonants.
 ans- 
 
-
-
-
-
-
-
-
-	 
-	 
-	 
-
 having clause:- Used to filter the groups.
 -having clause is written after the group by clause.
 -We can use having clause to write the condition based on group function/multi-row-function/aggregate function.
@@ -1192,7 +1181,7 @@ Syntax: select gf/group by expresion  -->5 (group by group)
 diffrence between where and having:
 1)where : It is used to filter records.
 -It executes row by row.
--We cant use mrf() in where clause.
+-We can't use mrf() in where clause.
 -Where clause is implimented on rows.
 -We write where clause before group by clause.
 -We can use where clause without using group by group clause.
@@ -1231,33 +1220,125 @@ ans- select count(*),deptno from emp
 	 having count(*)>=2;
 	 
 Q6)WAQTD total salary neded to pay all the employees if there are atleast 4 employee in each dept.
-ans- select sum(sal),deptno from emp
-	 group by deptno
-	 having count(*)>=4;
+ans- 
 	 
 Q7)WAQTD no. of employee earning salary more 1200 in each job and total salary neded to pay  all the employee for each job must exceed 3800.
-ans- select count(*),sal from emp
-	 where sal>1200
-	 group by job
-	 having sum(sal)>3800;
+ans- 
 	 
 Q8)WAQTD deptno and no of employee working in each dept if there exactly 2 employee working in each dept as ANALYST.
-ans- select deptno,count(*) from emp
-	 where job='ANALYST'
-	 group by deptno
-	 having count(*)=2;
+ans- 
 	 
 Q9)WAQTD minimum and maximum salaries of each job if minimum salary is more than 1000 and maximum salary is less than 5000.
-ans- select min(sal),max(sal),job from emp
-	 group by job
-	 having min(sal)>1000 and max(sal)<5000;
+ans-
 	 
 Q10)WAQTD average salary of each dept if average salary is less than 3000 and maximum salary exceeds 2600.
-ans- select avg(sal),deptno from emp
-	 group by deptno
-	 having avg(sal)<3000 and max(sal)>2600;
+ans-
 	 
 Q11)WAQTD hiredate which are duplicated in emp table.
-ans- select hiredate from emp
-	 group by hiredate
+ans-
+
+Q12)Display the deptno and salary, if employee earn same salary in same dept.
+ans-
+
+Q13)Display the job,sal and deptno, if employee work in same job with same salary and same dept.
+ans- select count(*),job,sal,deptno from emp
+	 group by job,sal,deptno
 	 having count(*)>1;
+
+Order by clause:
+-Used to sort the data according to asc or desc.
+-By default order by clause helps to sort in acs order.
+-We can pass more than one column in order by clause, always 1st preference give to the 1st column.
+-Instead of passing the column-name we can also sort by using the column-number.
+
+Syntax: select */distinct(col-name)
+		from table-name
+		order by col-1,col-2......  asc/desc;
+		
+order of execution: 1)from  2)distinct   3)select   4)order by
+
+Syntax-2: select gf/group by expresion
+		  from table-name
+		  where <condition>
+		  group by column-name
+		  having <condition>
+		  order by col-1,col-2......  asc/desc;
+		  
+order of execution: 1)from  2)where  3)group by  4)having  5)select  6)order by
+
+Q1)WAQTD details of employee and also display the salary  according to lowest to highest.
+ans- select * from emp
+	 order by sal;
+	 
+Q2)WAQTD details of employee and also display the ename according to desc order.
+ans- select * from emp
+	 order by ename desc;
+	 
+Q3)WAQTD details of employee and also sort according to the latest hiredate at the first row.
+ans-
+	 
+Q4)WAQTD details of employee and also sort the hiredate according to asc order.
+ans- 
+	 
+Q5)WAQTD repeated salary and sort the salary according to asc order. 
+ans- select sal from emp
+	 group by sal
+	 having count(*)>1
+	 order by sal;
+	 
+Q6)WAQTD no of employee working in each job, also sort according to no of employee in desc order.
+ans- select count(*) from emp
+	 order by job desc;
+
+
+Subquery:-
+-A query which is written inside another query is called subquery.
+-The query which is written inside the parenthesis will be identified as subqueries.
+-There are two main queries :-
+		1)Outer/Main query
+		2)Inner/Sub query
+
+Workflow:
+step1:- subquery gets executed 1st and produce some output.
+step2:- output of sub-query given as input of the main query and then main query gets executed.
+step3:- after execution of the outer-query it produce complete result.
+
+Syntax: select gf/group by exp
+		from table-name
+		where col-name (=/in) (select group by exp/col-name
+							   from table-name where <condition>
+							   group by exp
+							   having <condition>)
+		group by col-n
+		having <condition>
+		order by col-name;
+
+**-> Order by clause cannot be used in sub-query.
+
+Types of sub-query:-
+1)Single Row Subquery
+2)Multi Row Subquery
+3)Nested Subquery
+4)Inline Subquery
+5)Co-related Subquery
+
+1)Single Row Subquery:- If the sub-query return exactly one output/value is known as Single Row Subquery.
+- It supports both relational(<,>,<=,>=,=,!=) and special(in,not in) operator.
+
+2)Multi Row Subquery:- If the sub-query return more than one output/value will be known as Multi Row Subquery.
+- It supports special operator(in,not in) as well as (ANY and ALL operator).
+
+When to use sub-query ?
+Case-1: 
+When unknown is present in the question we need to use sub-query.
+
+Q1)WAQTD employee details if employee is working in same dept as ALLEN.
+ans- select * from emp where deptno=(select deptno from emp where ename='ALLEN');
+
+Q2)WAQTD employee details if employee working in same designation where Miller is working.
+ans- select * from emp where job=(select job from emp where ename='MILLER');
+
+Q3)WAQTD employee name and hiredate if employee hired in the same date where JONES is hired.
+ans- select ename,hiredate from emp where hiredate=(select hiredate from emp where ename='JONES');
+
+Q4)WAQTD ename,sal and deptno if employee earning same as SCOTT if they work in dept 10 or 20 and name start with vowel.
