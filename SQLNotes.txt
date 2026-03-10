@@ -1387,3 +1387,96 @@ Q)WAQTD dept details if the emp earning more than 2000 but less than KING
 select * from dept 
 where deptno in (select deptno from emp where sal>2000
 	and sal< (select sal from emp where ename='KING'));
+
+Case 3:- Finding maximum and minimum value.
+Q)WAQTD details of the employee who got maximum salary 
+select * from emp
+where sal = (select max(sal) from emp);
+
+Q)WAQTD details of the employee who got minimum salary 
+select * from emp
+where sal = (select min(sal) from emp);
+
+Q)WAQTD 2nd maximum sal
+select max(sal) from emp
+where sal < (select max(sal) from emp);
+
+Q)WAQTD details of emp getting 3rd max sal.
+select * from emp 
+where sal = (select max(sal) from emp
+where sal < (select max(sal) from emp 
+where sal < (select max(sal) from emp)));
+
+Q) Display department details of emp if getting highest sal
+select * from dept
+where deptno = (select deptno from emp 
+where sal = (select max(sal) from emp));
+
+Q)Display details of the emp who got hired as last emp
+select * from emp
+where hiredate = (select max(hiredate) from emp);
+
+Case 4:- Based on subquery special characters/operators
+ALL:- It is a special operator used along with a relational operator to compare the values present in RHS.
+-ALL operator returns true if all the values at the LHS and the RHS has the satisfying the condition.
+
+ANY:- It is a special operator used along with relational operator to compare the values in RHS and it retuns true if any one value at the RHS satisfied the condition.
+
+Q)Display emp details if emp earning more than SMITH(when we have more than one smith) .
+select * from emp
+where sal> all (select sal from emp
+	where ename = 'SMITH');
+	
+Q) Display details of emp whose sal is more than the maximum sal of each dept.
+select * from emp
+where sal> all (select max(sal) from emp
+	group by deptno);
+	
+Q) Display details if emp earning less than at least one SALESMAN.
+select * from emp 
+where sal < any (select sal from emp
+	where job='SALESMAN');
+	
+Q)Display ename, sal, hiredate if emp earning sal moe than deptno 20 but less than deptno 10.
+select ename, sal, hiredate from emp
+where sal > any (select sal from emp where deptno = 20)
+	and sal < any (select sal from emp where deptno = 10);
+	
+Case 5:- When relation present in question.
+
+Q) Display smith's manager name.
+select ename from emp 
+where empno = (select mgr from emp 
+		where ename='SMITH');
+		
+Q) Display MARTIN's manager also check if his name starting with consonants.
+select ename from emp
+where empno = (select mgr from emp
+	where ename='MARTIN') and 
+	substr(ename, 1,1) not in ('A', 'E','I', 'O','U');
+	
+Q) Display MILLER's manager's name if he works in dept 10 or 20
+select ename from emp
+where empno = (select mgr from emp where ename='MILLER')
+	and deptno in (10,20);
+
+Joins:-
+1)Inner Join/EQUI Join
+2)Outer Join
+	-Left Outer Join
+	-Right Outer Join
+	-Full Outer Join
+3)Cross Join
+4)Natural Join
+5)Self Join
+
+1)Inner Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 inner join table 2
+on join-condition;
