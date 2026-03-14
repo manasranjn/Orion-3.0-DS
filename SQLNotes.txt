@@ -1480,3 +1480,136 @@ ANSI-Syntax:
 select */column-name
 from table1 inner join table 2
 on join-condition;
+
+Q)Display all details from both emp and dept table
+select * 
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select * 
+from emp inner join dept
+on emp.deptno = dept.deptno;
+
+Q)Display emp name and dept name
+select ename, dname
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select ename, dname
+from emp inner join dept
+on emp.deptno = dept.deptno;
+
+Q)Display ename, dname if emp name start from A
+select ename, dname
+from emp, dept
+where emp.deptno= dept.deptno and 
+	ename like 'A%';
+	
+2)Outer Join
+a)Left Outer Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join condition (+);
+
+ANSI-Syntax:
+select */column-name
+from table1 left outer join table2
+on join-condition;
+
+Q)Display ename and their dname and also display the ename if emp not working in any dept.
+select ename, dname 
+from emp, dept
+where emp.deptno = dept.deptno (+);
+
+select ename, dname 
+from emp left outer join dept
+on emp.deptno = dept.deptno;
+
+b)Right Outer Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where (+) join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 right outer join table2
+on join-condition;
+
+Q)Display ename and their dname also display the deptname if no emp is working in that dept.
+select ename, dname 
+from emp, dept
+where emp.deptno(+) = dept.deptno;
+
+select ename, dname 
+from emp right outer join dept
+on emp.deptno = dept.deptno;
+
+c)Full Outer Join
+ANSI-Syntax:
+select */column-name
+from table1 full outer join table2
+on join-condition;
+
+Q)Display ename, dname also display the ename if emp don't work in any dept also include deptname if no emp is working in the dept.
+select ename, dname
+from emp full outer join dept
+on emp.deptno=dept.deptno;
+
+3)Cross Join
+Oracle-Syntax:
+select */column-name
+from table1, table2, table3...;
+
+ANSI-Syntax:
+select */column-name
+from table1 cross join table2 cross join table3.....;
+
+Q)Display ename and dname for each table.
+select ename, dname 
+from emp, dept;
+
+select ename, dname
+from emp cross join dept;
+
+Q)Display ename, dname, hisal for each table
+select ename, dname, hisal
+from emp, dept, salgrade;
+
+select ename, dname, hisal
+from emp cross join dept cross join salgrade;
+
+4)Natural Join
+ANSI-Syntax:
+select */column-name 
+from table1 natural join table2 natural join table3..;
+
+ex: select ename, dname 
+	from emp natural join dept;
+	
+ex: select ename, hisal
+	from emp natural join salgrade;	
+	
+5) Self Join
+Oracle-Syntax:
+select */column-name
+from table1, table2
+where join-condition;
+
+ANSI-Syntax:
+select */column-name
+from table1 join table2
+on join-condition;
+
+Q)Display emp name and his manager name.
+select e.ename, m.ename
+from emp e, emp m
+where e.mgr = m.empno;
+
+Q)Display ename and his manager name and his manager name.
+select e.ename, m1.ename, m2.ename
+from emp e, emp m1, emp m2
+where e.mgr = m1.empno and
+m1.mgr = m2.empno;
+
